@@ -1,21 +1,31 @@
-public class Point {
-    private int x;
-    private int y;
+class Point {
+    int x, y;
 
     public Point(int x, int y) {
         this.x=x;
         this.y=y;
     }
+}
+class Point3D extends Point {
+    int z;
+    public Point3D(int x, int y, int z) {
+        super(x, y);
+        this.z=z;
+    }
+    public int getZ() {
+        return z;
+    }
+    public void setZ(int z) {
+        this.z = z;
+    }
     @Override
     public String toString() {
-        return "{"+x+";"+y+"}";
+        return "Point3D{"+"x="+x+", y="+y+", z="+z+'}';
     }
+}
+class Main3 {
     public static void main(String[] args) {
-        Point2 p1=new Point2(1, 3);
-        Point2 p2=new Point2(1, 3);
-        Point2 p3=new Point2(5, 8);
-        System.out.println(p1+" "+(p1==p2));
-        System.out.println(p2+" "+(p1==p3));
-        System.out.println(p3+" "+(p2==p3));
+        Point3D point = new Point3D(1, 2, 3);
+        System.out.println(point);
     }
 }
