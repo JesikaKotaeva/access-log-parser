@@ -1,32 +1,19 @@
-import java.io.File;
-import java.util.Scanner;
-
-class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int validFileCount = 0;
-
-        while (true) {
-            System.out.print("Введите путь к файлу: ");
-            String path = scanner.nextLine();
-
-            File file = new File(path);
-            boolean exists = file.exists();
-            boolean isDirectory = file.isDirectory();
-
-            if (!exists) {
-                System.out.println("Файл не существует.");
-                continue;
-            }
-
-            if (isDirectory) {
-                System.out.println("Указанный путь ведет к папке, а не к файлу.");
-                continue;
-            }
-
-            validFileCount++;
-            System.out.println("Путь указан верно");
-            System.out.println("Это файл номер " + validFileCount);
+public class Main {
+    public static void printLengths(Measurable[] measurables) {
+        for (Measurable m : measurables) {
+            System.out.println("Длина: " + m.getLength());
         }
+    }
+
+    public static void main(String[] args) {
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(3, 0);
+        Point p3 = new Point(3, 4);
+
+        PolyLine polyLine = new PolyLine(p1, p2, p3);
+        ClosedPolyLine closedPolyLine = new ClosedPolyLine(p1, p2, p3);
+
+        Measurable[] measurables = {polyLine, closedPolyLine};
+        printLengths(measurables);
     }
 }

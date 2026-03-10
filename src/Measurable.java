@@ -1,0 +1,3 @@
+interface Measurable {
+    double getLength();
+}
