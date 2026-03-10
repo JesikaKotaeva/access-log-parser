@@ -1,3 +1,4 @@
+package ru.courses.math;
 class Fraction extends Number {
     int num, denum;
 

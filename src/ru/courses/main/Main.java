@@ -1,3 +1,9 @@
+package ru.courses.main;
+
+import ru.courses.geometry.*;
+import ru.courses.math.*;
+
+
 public class Main {
     public static void printLengths(Measurable[] measurables) {
         for (Measurable m : measurables) {

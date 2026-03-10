@@ -1,3 +1,4 @@
+package ru.courses.math;
 class FractionTask6 extends Number {
     int num, denum;
 

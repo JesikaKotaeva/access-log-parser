@@ -1,3 +1,4 @@
+package ru.courses.geometry;
 public class PolyLine implements Measurable {
     Point[] points;
 
