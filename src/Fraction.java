@@ -1,74 +1,58 @@
-public class Fraction {
-    private final int numerator;
-    private final int denominator;
+class Fraction extends Number {
+    int num, denum;
 
-    public Fraction(int numerator, int denominator) {
-        if (denominator <= 0) {
-            throw new IllegalArgumentException("Для знаменателя отрицательное и нулевое значение недопустимо");
-        }
-
-        int gcd = gcd(Math.abs(numerator), denominator);
-        this.numerator = numerator / gcd;
-        this.denominator = denominator / gcd;
+    public Fraction(int num, int denum) {
+        this.num = num;
+        this.denum = denum;
     }
 
-    private int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
+@Override
+    public int intValue() {
+        return (int) ((double) num / denum);
     }
 
-    public Fraction sum(Fraction other) {
-        int newNumerator = this.numerator * other.denominator + other.numerator * this.denominator;
-        int newDenominator = this.denominator * other.denominator;
-        return new Fraction(newNumerator, newDenominator);
+@Override
+    public long longValue() {
+        return (long) ((double) num / denum);
     }
 
-    public Fraction sum(int number) {
-        int newNumerator = this.numerator + number * this.denominator;
-        return new Fraction(newNumerator, this.denominator);
+@Override
+    public float floatValue() {
+        return (float) num / denum;
     }
 
-    public Fraction minus(Fraction other) {
-        int newNumerator = this.numerator * other.denominator - other.numerator * this.denominator;
-        int newDenominator = this.denominator * other.denominator;
-        return new Fraction(newNumerator, newDenominator);
+@Override
+    public double doubleValue() {
+        return (double) num / denum;
     }
 
-    public Fraction minus(int number) {
-        int newNumerator = this.numerator - number * this.denominator;
-        return new Fraction(newNumerator, this.denominator);
-    }
-
-    @Override
     public String toString() {
-        return numerator + "/" + denominator;
+        return num + "/" + denum;
     }
+}
 
-    public int getNumerator() {
-        return numerator;
-    }
-
-    public int getDenominator() {
-        return denominator;
-    }
-
+class Main2 {
     public static void main(String[] args) {
-        Fraction f1 = new Fraction(1, 3);
-        Fraction f2 = new Fraction(2, 5);
-        Fraction f3 = new Fraction(7, 8);
-        System.out.println("f1 = " + f1);
-        System.out.println("f2 = " + f2);
-        System.out.println("f3 = " + f3);
+        // Создаем дробь 3/4
+        Fraction f1 = new Fraction(3, 4);
+        System.out.println("Дробь: " + f1);
+        System.out.println("doubleValue(): " + f1.doubleValue());
+        System.out.println("floatValue(): " + f1.floatValue());
+        System.out.println("intValue(): " + f1.intValue());
+        System.out.println("longValue(): " + f1.longValue());
 
-        Fraction result = f1.sum(f2).sum(f3).minus(5);
+        System.out.println();
 
-        System.out.println("\nРезультат f1.sum(f2).sum(f3).minus(5) = " + result);
+        Fraction f2 = new Fraction(7, 2);
+        System.out.println("Дробь: " + f2);
+        System.out.println("doubleValue(): " + f2.doubleValue());
+        System.out.println("intValue(): " + f2.intValue());
 
-        Fraction negative = new Fraction(-3, 4);
-        System.out.println("\nОтрицательная дробь: " + negative);
+        System.out.println();
+
+        Fraction f3 = new Fraction(5, 3);
+        System.out.println("Дробь: " + f3);
+        System.out.println("doubleValue(): " + f3.doubleValue());
+        System.out.println("floatValue(): " + f3.floatValue());
     }
 }
