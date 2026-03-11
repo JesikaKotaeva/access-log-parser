@@ -1,6 +1,6 @@
 package ru.courses.geometry;
 
-public class ClosedPolyLine extends PolyLine {
+public class ClosedPolyLine extends PolyLine implements Measurable {
     public ClosedPolyLine(Point... points) {
         super(points);
     }
