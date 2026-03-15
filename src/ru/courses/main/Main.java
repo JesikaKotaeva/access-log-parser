@@ -9,6 +9,7 @@ public class Main {
         testGeometry();
         testFractions();
         testFractionTask6();
+        testPoint();
     }
 
     public static void testGeometry() {
@@ -51,5 +52,20 @@ public class Main {
             sum += n.doubleValue();
         }
         return sum;
+    }
+    public static void testPoint() {
+        System.out.println("\n---> Тест Point (equals и clone):");
+
+        Point p1 = new Point(5, 10);
+        Point p2 = new Point(5, 10);
+        Point p3 = new Point(3, 7);
+
+        System.out.println("p1.equals(p2): " + p1.equals(p2));
+        System.out.println("p1.equals(p3): " + p1.equals(p3));
+
+        Point p4 = p1.clone();
+        System.out.println("p1: " + p1);
+        System.out.println("p4 (копия p1): " + p4);
+        System.out.println("p1.equals(p4): " + p1.equals(p4)); // true
     }
 }
