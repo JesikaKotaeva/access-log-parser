@@ -10,6 +10,7 @@ public class Main {
         testFractions();
         testFractionTask6();
         testPoint();
+        testLine();
     }
 
     public static void testGeometry() {
@@ -45,7 +46,6 @@ public class Main {
         double result3 = sumAll(new FractionTask6(1, 3), 1);
         System.out.println("1/3 + 1 = " + result3);
     }
-
     public static double sumAll(Number... numbers) {
         double sum = 0;
         for (Number n : numbers) {
@@ -67,5 +67,26 @@ public class Main {
         System.out.println("p1: " + p1);
         System.out.println("p4 (копия p1): " + p4);
         System.out.println("p1.equals(p4): " + p1.equals(p4)); // true
+    }
+    public static void testLine() {
+        System.out.println("\n---> Тест Line (equals и clone):");
+
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(5, 10);
+        Point p3 = new Point(0, 0);
+        Point p4 = new Point(5, 10);
+
+        Line line1 = new Line(p1, p2);
+        Line line2 = new Line(p3, p4);
+        Line line3 = new Line(new Point(0, 0), new Point(3, 7));
+
+        System.out.println("line1.equals(line2): " + line1.equals(line2));
+        System.out.println("line1.equals(line3): " + line1.equals(line3));
+
+        Line lineClone = line1.clone();
+        System.out.println("line1: " + line1);
+        System.out.println("lineClone: " + lineClone);
+        System.out.println("line1.equals(lineClone): " + line1.equals(lineClone));
+        System.out.println("line1 == lineClone: " + (line1 == lineClone));
     }
 }
