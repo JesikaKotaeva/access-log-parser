@@ -11,6 +11,7 @@ public class Main {
         testFractionTask6();
         testPoint();
         testLine();
+        testPolyLine();
     }
 
     public static void testGeometry() {
@@ -88,5 +89,19 @@ public class Main {
         System.out.println("lineClone: " + lineClone);
         System.out.println("line1.equals(lineClone): " + line1.equals(lineClone));
         System.out.println("line1 == lineClone: " + (line1 == lineClone));
+    }
+    public static void testPolyLine() {
+        System.out.println("\n---> Тест PolyLine (equals и clone):");
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(3, 4);
+        Point p3 = new Point(0, 0);
+        Point p4 = new Point(3, 4);
+
+        PolyLine line1 = new PolyLine(p1, p2);
+        PolyLine line2 = new PolyLine(p3, p4);
+        PolyLine line3 = new PolyLine(new Point(0, 0), new Point(5, 5));
+
+        System.out.println("line1.equals(line2): " + line1.equals(line2));
+        System.out.println("line1.equals(line3): " + line1.equals(line3));
     }
 }
