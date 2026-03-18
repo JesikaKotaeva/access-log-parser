@@ -7,7 +7,6 @@ public class Sum {
                 sum += Double.parseDouble(arg);
             } catch (NumberFormatException e) {}
         }
-
         System.out.println("result: "+sum);
     }
 }
