@@ -11,7 +11,7 @@ class LineTooLongException extends RuntimeException {
 }
 public class AccessLogParser {
     public static void main(String[] args) {
-        String path = "C:\\Users\\DKotaeva\\IdeaProjects\\AccessLogParser\\access.log";
+        String path = "C:\\Users\\DKotaeva\\Desktop\\access.log";
         int totalLines = 0;
         int maxLength = 0;
         int minLength = Integer.MAX_VALUE;
