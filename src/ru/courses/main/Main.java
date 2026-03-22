@@ -2,18 +2,47 @@ package ru.courses.main;
 
 import ru.courses.geometry.*;
 import ru.courses.math.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        testGeometry();
-        testFractions();
-        testFractionTask6();
-        testPoint();
-        testLine();
-        testPolyLine();
+        //testGeometry();
+        //testFractions();
+        //testFractionTask6();
+        //testPoint();
+        //testLine();
+        //testPolyLine();
+        testAccessLogParser();
     }
+    public static void testAccessLogParser() {
+        String path = "C:\\Users\\DKotaeva\\Desktop\\access.log";
+        Statistics stats = new Statistics();
 
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                if (line.length() > 1024) {
+                    throw new RuntimeException("Строка длиннее 1024 символов!");
+                }
+
+                LogEntry entry = new LogEntry(line);
+                stats.addEntry(entry);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Ошибка чтения файла: " + e.getMessage());
+            return;
+        }
+
+        System.out.println("Всего записей: " + stats.getEntryCount());
+        System.out.println("Общий трафик: " + stats.getTotalTraffic() + " байт");
+        System.out.println("Средний трафик в час: " + stats.getTrafficRate() + " байт/час");
+    }
     public static void testGeometry() {
         //geometry
         System.out.println("---> Тест geometry:");
