@@ -5,6 +5,7 @@ import ru.courses.math.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
 
 
 public class Main {
@@ -55,6 +56,18 @@ public class Main {
         System.out.println("Всего записей: " + stats.getEntryCount());
         System.out.println("Общий трафик: " + stats.getTotalTraffic() + " байт");
         System.out.println("Средний трафик в час: " + stats.getTrafficRate() + " байт/час");
+        System.out.println("Всего записей: " + stats.getEntryCount());
+
+        System.out.println("\n200(OK) страницы: " + stats.getAllPages().size());
+        System.out.println("\nОперационные системы:");
+        for (Map.Entry<String, Double> e : stats.getOSStatistics().entrySet()) {
+            System.out.println(e.getKey() + ": " + String.format("%.2f%%", e.getValue() * 100));
+        }
+        System.out.println("\n404 страницы: " + stats.getNotFoundPages().size());
+        System.out.println("\nБраузеры:");
+        for (Map.Entry<String, Double> e : stats.getBrowserStatistics().entrySet()) {
+            System.out.println(e.getKey() + ": " + String.format("%.2f%%", e.getValue() * 100));
+        }
     }
     public static void testGeometry() {
         //geometry
