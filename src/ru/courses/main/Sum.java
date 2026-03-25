@@ -1,12 +1,15 @@
 public class Sum {
     public static void main(String[] args) {
-        double sum = 0;
-
+        double sum=0.0;
         for (String arg : args) {
-            try {
-                sum += Double.parseDouble(arg);
-            } catch (NumberFormatException e) {}
+            if (arg.matches("-?\\d+(\\.\\d+)?")) {
+                sum+=Double.parseDouble(arg);
+            }
         }
-        System.out.println("result: "+sum);
+        if (sum==(long) sum) {
+            System.out.println("результат: "+(long) sum);
+        } else {
+            System.out.println("результат: "+sum);
+        }
     }
 }
