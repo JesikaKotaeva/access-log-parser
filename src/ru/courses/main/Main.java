@@ -24,15 +24,28 @@ public class Main {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
+            int lineNumber = 0;
+            int skippedLines = 0;
 
             while ((line = reader.readLine()) != null) {
+                lineNumber++;
+
                 if (line.length() > 1024) {
-                    throw new RuntimeException("Строка длиннее 1024 символов!");
+                    throw new RuntimeException("Строка " + lineNumber + " длиннее 1024 символов!");
                 }
 
-                LogEntry entry = new LogEntry(line);
-                stats.addEntry(entry);
+                try {
+                    LogEntry entry = new LogEntry(line);
+                    stats.addEntry(entry);
+                } catch (IllegalArgumentException e) {
+                    // Из-за одной строки в логе выдавало ошибку поэтому решила пропустить эту строку
+                    System.out.println("Пропуск строки " + lineNumber + " из-за некорректного формата");
+                    skippedLines++;
+                }
             }
+
+            System.out.println("Всего обработано строк: " + (lineNumber - skippedLines));
+            System.out.println("Пропущено строк: " + skippedLines);
 
         } catch (IOException e) {
             System.out.println("Ошибка чтения файла: " + e.getMessage());
